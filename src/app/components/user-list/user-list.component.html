@@ -1,0 +1,22 @@
+<h1>Users List</h1>
+<button class="btn btn-primary" (click)="toggleForm()">{{isFormVisible ? 'Close Form' : 'Add New User'}}</button>
+<ula-user-form *ngIf = "isFormVisible"></ula-user-form>
+<ul class="flex column">
+    <li class="flex column width-80" *ngFor="let user of userList">
+        <div class="flex row justify-between">
+            <span>Id: {{ user.id }}</span>
+            <span>Name: {{ user.name }}</span>
+        </div>
+        <div class="flex row justify-between">
+            <span>D.O.B.: {{ user.dob | date }}</span>
+            <span>Work Environment: {{ user.workEnvironment }}</span>
+        </div>
+        <div class="flex row justify-between">
+            <span>Email: {{ user.email }}</span>
+            <span>Phone: {{ user.phone }}</span>
+        </div>
+        <div *ngIf="user.remarks" class="flex row">
+            <span>Remarks: {{ user.remarks }}</span>
+        </div>
+    </li>
+</ul>

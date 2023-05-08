@@ -1,0 +1,75 @@
+<div *ngIf="isFormVisible" class="container">
+    <div class="form-container">
+        <h1>New User Details</h1>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="form-control" id="id" formControlName="id" required>
+            </div>
+            <div *ngIf="userForm.controls['id'].invalid && (userForm.controls['id'].dirty || userForm.controls['id'].touched)" class="alert alert-danger">
+                <div *ngIf="userForm.controls['id'].errors?.['required']">
+                    Id is required.
+                </div>
+                <div *ngIf="userForm.controls['id'].errors?.['minlength']">Id must contain at least 3 characters.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" required>
+            </div>
+            <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="userForm.controls['name'].errors?.['required']">
+                    Name is required.
+                </div>
+                <div *ngIf="userForm.controls['name'].errors?.['minlength']">Name must contain at least 3 characters.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">D.O.B.</label>
+                <input type="date" class="form-control" id="dob" formControlName="dob" required>
+            </div>
+            <div *ngIf="userForm.controls['dob'].invalid && (userForm.controls['dob'].dirty || userForm.controls['dob'].touched)" class="alert alert-danger">
+                <div *ngIf="userForm.controls['dob'].errors?.['required']">
+                    D.O.B. is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" required>
+            </div>
+            <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)" class="alert alert-danger">
+                <div *ngIf="userForm.controls['email'].errors?.['required']">
+                    Email is required.
+                </div>
+                <div *ngIf="userForm.controls['email'].errors?.['email']">Email must be a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone" required>
+            </div>
+            <div *ngIf="userForm.controls['phone'].invalid && (userForm.controls['phone'].dirty || userForm.controls['phone'].touched)" class="alert alert-danger">
+                <div *ngIf="userForm.controls['phone'].errors?.['required']">
+                    Phone is required.
+                </div>
+                <div *ngIf="userForm.controls['phone'].errors?.['minlength']">Phone must contain at least 10 characters.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="workEnvironment">Work Environment</label>
+                <select class="form-control" id="workEnvironment" formControlName="workEnvironment" required>
+                    <option>Remote</option>
+                    <option>Office</option>
+                    <option>Hybrid</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="remarks">Remarks</label>
+                <input type="text" class="form-control" id="remarks" formControlName="remarks">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="closeForm()">Cancel</button>
+        </form>
+    </div>
+</div>
